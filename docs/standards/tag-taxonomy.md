@@ -1,12 +1,12 @@
 ---
 title: Connected Health Tag Taxonomy
-version: "1.0"
+version: "1.2"
 author:
   - Chris Anderson
 updated: 2025-04-29
 ---
 
-# Connected Health Tag Taxonomy 
+# Connected Health Tag Taxonomy
 
 ## Purpose
 Define a unified, cross-platform tagging structure for GHL and Membership.io that balances:
@@ -42,17 +42,47 @@ Define a unified, cross-platform tagging structure for GHL and Membership.io tha
 ---
 
 ## 3. Module Status Tags
-| Tag Name                          | System          | Purpose                                |
-|----------------------------------|------------------|----------------------------------------|
-| `module::started::connected_cleanse` | GHL, M.io    | Module unlocked, tracking begun        |
-| `module::complete::connected_cleanse`| GHL, M.io    | Module marked as finished              |
-| `module::locked::reset`             | GHL           | For access gating UX                   |
 
-> ✳️ Use module status tags to enable/disable access or route reminders.
+| Tag Name                               | System    | Purpose                           |
+| -------------------------------------- | --------- | --------------------------------- |
+| `module::started::real-food-journey`   | GHL, M.io | Trial module unlocked and active  |
+| `module::complete::real-food-journey`  | GHL, M.io | Trial module completed            |
+| `module::started::connected_cleanse`   | GHL, M.io | Cleanse module access granted     |
+| `module::complete::connected_cleanse`  | GHL, M.io | Cleanse module marked as finished |
+| `module::started::balance`             | GHL, M.io | BS-1.0 Balance Module started     |
+| `module::complete::balance`            | GHL, M.io | BS-1.0 Balance Module complete    |
+| `module::started::revitalize-adrenal`  | GHL, M.io | BS-1.1 Module started             |
+| `module::complete::revitalize-adrenal` | GHL, M.io | BS-1.1 Module complete            |
+| `module::started::unwind-adrenal`      | GHL, M.io | BS-1.2 Module started             |
+| `module::complete::unwind-adrenal`     | GHL, M.io | BS-1.2 Module complete            |
+| `module::started::revitalize-thyroid`  | GHL, M.io | BS-1.3 Module started             |
+| `module::complete::revitalize-thyroid` | GHL, M.io | BS-1.3 Module complete            |
+| `module::started::unwind-thyroid`      | GHL, M.io | BS-1.4 Module started             |
+| `module::complete::unwind-thyroid`     | GHL, M.io | BS-1.4 Module complete            |
+| `module::started::reset`               | GHL, M.io | BS-2 Module started               |
+| `module::complete::reset`              | GHL, M.io | BS-2 Module complete              |
+| `module::started::strengthen`          | GHL, M.io | BS-3 Module started               |
+| `module::complete::strengthen`         | GHL, M.io | BS-3 Module complete              |
+| `module::started::purify`              | GHL, M.io | BS-4 Module started               |
+| `module::complete::purify`             | GHL, M.io | BS-4 Module complete              |
+| `module::started::harmonize`           | GHL, M.io | BS-5 Module started               |
+| `module::complete::harmonize`          | GHL, M.io | BS-5 Module complete              |
+
+> ✳️ These tags are used by Membership.io to control visibility of module pages and content blocks.
 
 ---
 
-## 4. Assessment Flags
+## 4. Access Control Tags
+| Tag Name                          | System          | Purpose                                |
+|----------------------------------|------------------|----------------------------------------|
+| `access::unlocked::body-systems-assessment` | M.io | Enables Body Systems form visibility   |
+| `access::unlocked::labs`         | M.io             | Grants access to Labs dashboard section |
+| `access::locked::body-systems-assessment` | M.io | Prevents premature access              |
+| `access::locked::labs`           | M.io             | Default for non-members                |
+
+---
+
+## 5. Assessment Flags
 | Tag Name                  | System          | Purpose                                 |
 |--------------------------|------------------|-----------------------------------------|
 | `assessment::complete::body_systems` | GHL    | Trigger post-assessment workflows       |
@@ -61,7 +91,7 @@ Define a unified, cross-platform tagging structure for GHL and Membership.io tha
 
 ---
 
-## 5. Engagement & Re-engagement
+## 6. Engagement & Re-engagement
 | Tag Name                    | System  | Purpose                                 |
 |----------------------------|---------|-----------------------------------------|
 | `engagement::active`       | GHL     | Recent login, quiz, or module activity  |
@@ -71,7 +101,7 @@ Define a unified, cross-platform tagging structure for GHL and Membership.io tha
 
 ---
 
-## 6. Support Flags
+## 7. Support Flags
 | Tag Name                    | System  | Purpose                                 |
 |----------------------------|---------|-----------------------------------------|
 | `support::manual_override` | GHL     | For admin-triggered logic bypass        |
@@ -80,7 +110,7 @@ Define a unified, cross-platform tagging structure for GHL and Membership.io tha
 
 ---
 
-## 7. Marketing & Referral
+## 8. Marketing & Referral
 | Tag Name                      | System | Purpose                                  |
 |------------------------------|--------|------------------------------------------|
 | `marketing::testimonial_ready` | GHL  | Trigger testimonial request               |
@@ -90,72 +120,10 @@ Define a unified, cross-platform tagging structure for GHL and Membership.io tha
 
 ---
 
-## 8. Visual Map of Tag Clusters
-```mermaid
-graph TD
-  A[stage::lead] --> B[stage::tripwire] --> C[stage::member] --> D[stage::cancelled]
-  subgraph Membership
-    E[tier::pragmatic]
-    F[tier::pro]
-    G[tier::premium]
-  end
-  subgraph Module Access
-    H[module::started::connected_cleanse]
-    I[module::complete::connected_cleanse]
-    J[module::locked::reset]
-  end
-  subgraph Assessment
-    K[assessment::complete::body_systems]
-    L[assessment::score::bs-1.3]
-    M[assessment::quiz::gut_score_high]
-  end
-  subgraph Engagement
-    N[engagement::active]
-    O[engagement::inactive_7d]
-    P[engagement::milestone::30d]
-    Q[engagement::streak::weekly_rhythm]
-  end
-  subgraph Support
-    R[support::manual_override]
-    S[support::flagged]
-    T[support::lab_exception]
-  end
-  subgraph Marketing
-    U[marketing::testimonial_ready]
-    V[marketing::referral_opt_in]
-    W[marketing::use_case::family]
-    X[marketing::use_case::employer]
-  end
-```
-
----
-
-## 9. Tag-to-Field Mapping
-| Tag Name                          | Related Field                 | Logic Purpose                       |
-|----------------------------------|-------------------------------|-------------------------------------|
-| `stage::member`                  | `membership_status`           | Reflects active status              |
-| `tier::premium`                  | `membership_tier_current`     | Reinforces tier-level logic         |
-| `module::complete::*`           | Supabase `module_engagements` | Syncs UI trigger to stored status   |
-| `assessment::score::*`          | `current_system_code`         | Matches structured logic flag       |
-| `engagement::*`                 | N/A                           | Lightweight behavior tags           |
-| `support::lab_exception`        | `is_lab_eligible`             | UI flag to mirror structured field  |
-| `marketing::testimonial_ready`  | N/A                           | Trigger for campaign automation     |
-
-> ⚠️ Tags must never override structured field logic. They support UI states, segmentation, or temporary automation hooks.
-
----
-
-## Governance Notes
-- ✅ Tags should be created **programmatically** via Make.com whenever possible
-- 🚫 Avoid adding decision logic in workflows based solely on tag presence
-- 🧹 Use `tag::sync::*` only for 1-time sync (auto-delete after routing logic)
-- 📆 Quarterly audit of orphaned or unreferenced tags should be scheduled
-
----
-
 ## Versioning Notes
-- v1.0 includes first complete pass of lifecycle, access, and engagement flags
-- Visual tag map and tag-to-field mapping added for implementation clarity
-- Future versions may include campaign-specific tags (launches, promos)
+- v1.2 adds nine body systems modules
+- v1.1 adds module unlock tags for Real Food Journey, Connected Cleanse, Labs, and Body Systems Assessment
+- Clarifies distinction between module status (`module::*`) and access control (`access::*`)
+- Retains all original v1.0 logic and mappings for lifecycle and engagement
 
 ---
