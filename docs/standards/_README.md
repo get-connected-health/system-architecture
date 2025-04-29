@@ -1,52 +1,33 @@
----
-title: Branch Naming Convention
-last-updated: 2025-04-29
-author: Chris Anderson
----
+# Documentation Standards Folder
 
-# Branch Naming Convention
+This folder defines all **contributor standards** for working inside the `system-architecture` repository.
 
-To ensure clarity, traceability, and clean collaboration in the `system-architecture` repo, all Git branches must follow the format below.
+It acts as the source of truth for **naming conventions**, **PR practices**, **branch discipline**, and **future governance** of technical work.
 
 ---
 
-## ✅ Prefixes and Use Cases
+## 📂 Folder Structure
 
-| Prefix | Use Case | Example |
-|--------|----------|---------|
-| `feature/` | New functionality, flows, integrations, or blueprints | `feature/member-dashboard-v1`, `feature/onboarding-flow-sync` |
-| `fix/` | Bug fixes, sync failures, broken logic | `fix/lab-score-update`, `fix/supabase-write-error` |
-| `docs/` | Markdown edits, schema versioning, README updates | `docs/member-object-v1.6`, `docs/system-blueprint-update` |
-| `chore/` | Non-functional updates: repo cleanup, templates, naming | `chore/pr-template`, `chore/add-changelog` |
-| `refactor/` | Logic cleanup or structural rework (no behavior change) | `refactor/form-mapping-layer` |
-| `hotfix/` | Urgent fix to critical system breakage | `hotfix/slack-alert-bug`, `hotfix/onboarding-trigger` |
+| File | Purpose |
+|:-----|:--------|
+| `branch-naming.md` | Defines naming rules for Git branches (e.g., feature/xyz, fix/abc) |
+| (future) `pr-review-guidelines.md` | How to review and approve Pull Requests consistently |
+| (future) `style-guide.md` | Markdown, formatting, and repo hygiene rules |
 
 ---
 
-## ✅ Formatting Rules
+## 📌 Standards
 
-- Use **lowercase and dashes**: `feature/gut-score-pipeline`, not `Feature/GutScorePipeline`
-- Keep names descriptive but short (3–6 words max)
-- Match the branch name to **the system area or feature affected**
-- Never commit directly to `main` — always open a Pull Request
-
----
-
-## 💡 Examples
-
-| Task | Branch Name |
-|------|-------------|
-| Add lab results logic to AI Coach | `feature/ai-coach-lab-handler` |
-| Fix broken GravityForms payload in Make.com | `fix/gf-make-payload-error` |
-| Add Supabase journaling schema | `docs/journaling-schema-v1.0` |
-| Refactor tag-to-field mapping logic | `refactor/ghl-tag-map` |
-| Create README + onboarding flow outline | `docs/onboarding-flow-readme` |
+- Follow **branch naming conventions** for every Git branch.
+- Complete all **PR templates** before requesting a merge into `main`.
+- Update **CHANGELOG.md** when blueprints, schemas, or flow logic changes.
+- Prefer **descriptive, traceable commits** over "quick fix" messages.
 
 ---
 
-## 📌 Related Standards
+## 📚 Related References
 
-- [Pull Request Template](../../.github/PULL_REQUEST_TEMPLATE.md)
-- [CHANGELOG.md](../../architecture/system-blueprints/CHANGELOG.md)
+- [architecture/_README.md](../../architecture/_README.md)
+- [.github/PULL_REQUEST_TEMPLATE.md](../../.github/PULL_REQUEST_TEMPLATE.md)
 
 ---
