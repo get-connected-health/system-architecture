@@ -51,6 +51,15 @@ Each folder contains its own `_README.md` with a description of its contents.
 
 ---
 
+### Rubico Developer Kickoff Resources
+- [Tag Taxonomy v1.2](docs/tag-taxonomy-v1.2.md)
+- [Body Systems Assessment Field Mapping](docs/body-systems-assessment-field-mapping.md)
+- [Gut Health Quiz Field Mapping](docs/gut-health-quiz-field-mapping.md)
+
+If you are new to the Connected Health codebase, start by reviewing the documents above. Then clone the repo and begin with the Make.com scenarios under `/make`.
+
+---
+
 ## Questions?
 
 Please open an Issue in this repository and assign it to the @Architect for clarification or further discussion.
