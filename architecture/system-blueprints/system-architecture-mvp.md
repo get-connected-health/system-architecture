@@ -1,56 +1,87 @@
 ---
 title: Connected Health – System Architecture (MVP Pivot)
-version: 1.2
-last-updated: 2025-04-29
-author: Chris Anderson
+version: 1.3
+updated:
+  - 2025-04-29
+author:
+  - Chris Anderson
 replaces: Data-Flow Map v1.1 + Form Interaction Map v1.2
 ---
+# Connected Health — System Architecture (MVP Pivot)
 
-# Connected Health – System Architecture (MVP Pivot)
+---
 
 ## Purpose
+This document defines the updated system architecture for Connected Health's MVP funnel as of April 30, 2025.
 
-This document locks the **GravityForms → Make.com → Supabase → GoHighLevel → Membership.io** integration architecture for the Connected Health MVP launch by July 31, 2025.
+It integrates corrections to:
+- The lead → tripwire → membership → assessment journey
+- Dual tripwire options (Energy Reset, REAL Food Journey Trial)
+- Membership unlock logic for assessments, labs, and modules
+- GHL and Membership.io platform integration via Make.com
 
-It supersedes all prior drafts of the Data-Flow Map (v1.1) and Form Interaction Map (v1.2).
+This supersedes the v1.2 system blueprint and aligns with the finalized member-journey-overview.
 
 ---
 
-## 1. High-Level System Architecture
-┌───────────────────────────┐
+#  High-Level System Blueprint
 
-│  GravityForms (WordPress) │  <─ Member completes Tripwire checkout + Assessments
+```plaintext
+[Lead Magnet Opt-In (GHL Form)]
+    ↓
+[Tripwire: 3-Day Energy Reset OR REAL Food Journey Trial (GHL Checkout)]
+    ↓
+[REAL Food Journey Module Access]
+    ↓
+[Connected Health Membership Purchase (GHL Checkout)]
+    ↓
+Unlocks:
+  ├─ Body Systems Assessment Form (GravityForms) — (tag: access::unlocked::body-systems-assessment)
+  ├─ Labs Access — (tag: access::unlocked::labs)
+    ↓
+[Submit Body Systems Assessment (GravityForms)]
+    ↓
+Assign Post-Assessment Module:
+  ├─ Balance
+  ├─ Revitalize-Adrenal
+  ├─ Unwind-Adrenal
+  ├─ Revitalize-Thyroid
+  ├─ Unwind-Thyroid
+  ├─ Reset
+  ├─ Strengthen
+  ├─ Purify
+  └─ Harmonize
+    ↓
+Track in Supabase:
+  ├─ `members`
+  ├─ `assessments`
+  ├─ `module_engagements`
+  └─ `events_log`
+```
 
-└──────────┬────────────────┘
-│  JSON webhook (Make.com)
-┌──────────▼──────────────┐
-│     Make.com (iPaaS)    │  – Scenario 01: GF → Supabase
-│                          │  – Scenario 02: Supabase → GHL sync
-│                          │  – Scenario 03: M.io onboarding → Supabase
-└──────────┬───────────────┘
-│ upsert
-┌──────────▼──────────────┐
-│  Supabase (Postgres + RT)│   ← **System-of-Record** (6 MVP tables)
-└──────────┬────┬──────────┘
-│    └──────────► Slack (admin alerts)
-│
-└───────────────► GoHighLevel CRM  (tags + custom fields)
-│
-└──────────► Email / SMS automations
-
-  Membership.io  (LMS + Forum + Read-only Dashboard v1)
-       ▲
-       └──── pulls scores & lab-status from Supabase via Make API---
 ---
-## 2. Integration Scenario Blueprints
 
-| # | Name | Trigger | Core Steps | Outputs |
-|:--|:----|:--------|:------------|:--------|
-| 01 | GF → Supabase Upsert | Webhook (GF submit) | Parse payload, insert/update `member_id`, map fields to Supabase tables | HTTP 200 response to GF, Slack success alert |
-| 02 | Supabase → GHL Sync | Row inserted in Supabase | Detect changes, update GHL custom fields/tags, post Slack event | CRM enrichment |
-| 03 | M.io → Supabase | Onboarding form submit | Parse M.io data, map to `members` table, tag in GHL | Enriched member profile |
+## Core Systems & Roles
 
-> **Error handling:** Each scenario ends with a Slack alert if errors occur; all failures logged into `events_log` with `status = "error"`.
+| System | Role |
+|:--|:--|
+| GravityForms (WordPress) | Form intake for assessments (Body Systems, Gut, Stress, Sleep) |
+| Make.com | Webhook catch, Supabase ingestion, GHL updates |
+| Supabase | Master data record (members, assessments, labs, module engagement) |
+| GoHighLevel (GHL) | CRM tagging, automations, SMS/email nurture, purchases |
+| Membership.io (M.io) | Member dashboard visibility control, module access unlocks |
+| Slack (Internal) | Admin alerts on errors, intakes |
+
+---
+
+## Integration Scenarios
+
+| # | Name | Trigger | Core Steps | Output |
+|--:|-----|:--------|:-----------|:------|
+| 01 | GF → Supabase Intake: Body Systems | GF Submit | Parse payload, insert into `assessments`, Slack success | Record created |
+| 02 | GF → Supabase Intake: Gut Health | GF Submit | Parse payload, insert into `assessments`, Slack success | Record created |
+| 03 | GHL Purchase → Member Unlock | Checkout in GHL | Apply membership tags; trigger assessment + labs access | Member unlocked |
+| 04 | Post-Assessment Module Unlock (Planned) | Assessment complete | Assign module tag based on scores | Trigger module access |
 
 ---
 
@@ -120,50 +151,52 @@ It supersedes all prior drafts of the Data-Flow Map (v1.1) and Form Interaction 
 
 ---
 
-## 4. Form Interaction Matrix
+## Tag-Driven Unlocks (Critical Architecture)
 
-| Form (Location) | Status | Supabase Table | GHL Field/Tag |
-|:----------------|:-------|:---------------|:--------------|
-| Tripwire Checkout (GF) | ✅ Live | `members` | `stage::tripwire` |
-| Body Systems Assessment (GF) | ✅ Live | `assessments` | `assessment::complete::body_systems` |
-| Gut Quiz (GF) | ✅ Live | `assessments` | `gut_score_latest` |
-| Stress Quiz (GF) | ⬜ Build | `assessments` | `stress_score_latest` |
-| Sleep Quiz (GF) | ⬜ Build | `assessments` | `sleep_score_latest` |
-| M.io Onboarding Profile | ✅ Live | `members` | `onboarding::profile_complete` |
-| Cleanse Feedback (GF) | ⬜ Week 3 | `program_feedback` | `feedback::submitted` |
+| Tag Applied | Unlock Action | System(s) |
+|:--|:--|:--|
+| `module::started::real-food-journey` | REAL Food Journey dashboard visible | M.io, GHL |
+| `membership::connected-health::active` | Body Systems Assessment + Labs access unlocked | M.io, GHL |
+| `access::unlocked::body-systems-assessment` | Body Systems Form visible | M.io |
+| `access::unlocked::labs` | Labs Dashboard Section visible | M.io |
+| `module::started::[MODULE-CODE]` | Specific health optimization module unlocked | M.io, GHL |
 
----
-
-## 5. GHL Field & Tag Mapping (Excerpt)
-
-| Source | Destination | Notes |
-|:-------|:------------|:------|
-| `assessment.score` (gut) | GHL field `Gut Score Latest` | |
-| `assessment.score` (stress) | GHL field `Stress Score Latest` | |
-| `member.signup_date` | GHL tag `stage::member` | |
-| M.io onboarding complete | GHL tag `onboarding::profile_complete` | |
+> All unlocks must sync across GHL and M.io to maintain automation + UX consistency.
 
 ---
 
-## 6. Versioning & File Structure Notes
+## Risk Watchpoints
 
-```plaintext
-/architecture/system-blueprints/
-  ├─ system-architecture-mvp_v1.2.md   # ← (this file)
-  ├─ supabase-schema_v1.0.sql
-  ├─ make-scenario_outlines_v0.1.md
-  ├─ form-maps_v1.3.md
-  └─ CHANGELOG.md
-```
-
-- SQL schema dump separately maintained.    
-- Keep Make.com scenarios mapped in markdown before export.
-- Maintain CHANGELOG for blueprint pivots.
+| Risk | Mitigation |
+|:--|:--|
+| Tag sync failure between GHL and M.io | Implement webhook-based sync or nightly audit jobs |
+| Late module assignment after assessment | Ensure Make.com scenarios apply next module tag immediately |
+| GravityForms submission errors | Use Slack alerts + retry logic for Webhook failures |
 
 ---
 
-## 7. CHANGELOG
-|**Date**|**Version**|**Summary**|
-|---|---|---|
-|2025-04-29|v1.2 DF / v1.3 FI|Pivot to GravityForms intake, Membership.io read-only dashboard|
-|2025-04-30|v1.2a|Add M.io onboarding webhook, Supabase schema refinement|
+## Future Enhancements (Post-MVP)
+- Full automation of module assignment workflows
+- Predictive re-engagement triggers based on inactivity (e.g., no module start within 7 days)
+- Lab panel dynamic status tracking in Supabase + M.io
+- Member self-service module switching (long-term)
+
+---
+
+# 💡 Versioning Notes
+
+- **v1.0:** Original intake design (Searchie / Zapier vision)
+- **v1.1:** Pivot to GravityForms + Make.com
+- **v1.2:** MVP data model alignment (April 15)
+- **v1.3:** Full onboarding unlock correction (REAL Food Journey, Membership gates, Module unlock tagging)
+
+---
+
+# 📊 Related Documents
+
+- [Member Journey Overview (Final)](../../docs/standards/member-journey-overview.md)
+- [Tag Taxonomy v1.2](../../docs/standards/tag-taxonomy.md)
+- [CRM Tag Mapping v1.2](../../docs/standards/crm-tag-mapping.md)
+
+---
+
