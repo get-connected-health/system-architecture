@@ -1,18 +1,16 @@
 ---
 title: Connected Health – System Architecture (MVP Pivot)
-version: 1.3
-updated:
-  - 2025-04-29
-author:
-  - Chris Anderson
-replaces: Data-Flow Map v1.1 + Form Interaction Map v1.2
+version: 1.4
+tags: blueprint, data-model, logic
+author: Chris Anderson
+updated: 2025-04-29
 ---
 # Connected Health — System Architecture (MVP Pivot)
 
 ---
 
 ## Purpose
-This document defines the updated system architecture for Connected Health's MVP funnel as of April 30, 2025.
+This document defines the full system architecture for Connected Health’s MVP funnel, covering tag-driven access logic, Supabase schema structure, Make.com automations, and platform roles for GHL, GravityForms, and Membership.io..
 
 It integrates corrections to:
 - The lead → tripwire → membership → assessment journey
@@ -189,14 +187,15 @@ Track in Supabase:
 - **v1.1:** Pivot to GravityForms + Make.com
 - **v1.2:** MVP data model alignment (April 15)
 - **v1.3:** Full onboarding unlock correction (REAL Food Journey, Membership gates, Module unlock tagging)
+- **v1.4:** Updated metadata to accommodate a flattened structure for repo/architecture
 
 ---
 
 # 📊 Related Documents
 
-- [Member Journey Overview (Final)](../../docs/standards/member-journey-overview.md)
-- [Tag Taxonomy v1.2](../../docs/standards/tag-taxonomy.md)
-- [CRM Tag Mapping v1.2](../../docs/standards/crm-tag-mapping.md)
+- [Member Journey Overview](./member-journey-overview.md)
+- [Tag Taxonomy v1.2](./tag-taxonomy.md)
+- [CRM Tag Mapping v1.2](./crm-tag-mapping.md)
 
 ---
 

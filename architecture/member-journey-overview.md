@@ -1,7 +1,9 @@
 ---
 title: Member Journey Overview (REAL Food Journey Onboarding)
-last-updated: 2025-04-29
+version: 1.1
+tags: logic, blueprint
 author: Chris Anderson
+last-updated: 2025-04-30
 ---
 # Member Journey Overview — Connected Health (Dual Path Model)
 

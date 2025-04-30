@@ -1,9 +1,9 @@
 ---
-title: Gut Health Quiz — Field Mapping
-updated:
-  - 2025-04-29
-author:
-  - Chris Anderson
+title: Field Mapping - Quiz - Gut Health
+version: 1.1
+tags: data-model
+author: Chris Anderson
+updated: 2025-04-30
 ---
 # Gut Health Quiz — GravityForms to Supabase Mapping
 
@@ -18,3 +18,8 @@ This table defines how GravityForms fields map to Supabase database fields.
 
 ---
 > 📎 Related: See [GravityForms Export](../../../forms-and-integrations/gravity-forms/gf-quiz-gut-health-2025-04-29.json)
+
+---
+
+## Versioning Notes
+- **v1.1** updates name and metadata for flattened /architecture

@@ -1,9 +1,9 @@
 ---
-title: Body Systems Assessment — Field Mapping
-updated:
-  - 2025-04-29
-author:
-  - Chris Anderson
+title: Field Mapping - Assessment - Body Systems
+version: 1.1
+tags: data-model
+author: Chris Anderson
+updated: 2025-04-30
 ---
 # Body Systems Assessment — Field Mapping
 
@@ -254,7 +254,7 @@ This table defines how GravityForms fields map to Supabase database fields.
 |                                                                                                                                                  |             |                |                     |                                     |
 
 ---
-## 📌 Notes
+## Notes
 
 - GravityForms Field IDs should be filled once available inside the form editor or JSON export.
 - Supabase table: `assessments`
@@ -262,15 +262,16 @@ This table defines how GravityForms fields map to Supabase database fields.
   - Score versions = `v1.0`
 - Each submission creates a new row in `assessments`.
 
-
 ---
 
-## 📚 Related References
+## Related References
 
-- [Body Systems Assessment Field Documentation](./body-systems-assessment.md)
+- [Body Systems Assessment Field Documentation](./fields-assessment-body-systems.md)
 
-- [GravityForms Export JSON](../../../forms-and-integrations/gravity-forms/gf-body-systems-assessment-2025-04-29.json)
+- [GravityForms Export JSON](../forms-and-integrations/gravity-forms/gf-body-systems-assessment-2025-04-29.json)
 
   
-
 ---
+
+## Versioning Notes
+- **v1.1** updates name and metadata for flattened /architecture

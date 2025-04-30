@@ -1,9 +1,9 @@
 ---
 title: Connected Health Tag Taxonomy
-version: "1.2"
-author:
-  - Chris Anderson
-updated: 2025-04-29
+version: "1.3"
+tags: logic
+author: Chris Anderson
+updated: 2025-04-30
 ---
 
 # Connected Health Tag Taxonomy
@@ -121,6 +121,7 @@ Define a unified, cross-platform tagging structure for GHL and Membership.io tha
 ---
 
 ## Versioning Notes
+- v1.3 metadata updates to accommodate move to /architecture folder
 - v1.2 adds nine body systems modules
 - v1.1 adds module unlock tags for Real Food Journey, Connected Cleanse, Labs, and Body Systems Assessment
 - Clarifies distinction between module status (`module::*`) and access control (`access::*`)

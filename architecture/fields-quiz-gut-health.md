@@ -1,13 +1,13 @@
 ---
-title: Gut Health Quiz Field Map
-updated:
-  - 2025-04-29
-author:
-  - Chris Anderson
+title: Fields - Quiz - Gut Health
+version: 1.1
+tags: data-model
+author: Chris Anderson
+updated: 2025-04-30
 ---
 # Gut Health Quiz Field Documentation
 
-> 📎 Related: See [GravityForms Export](../../../forms-and-integrations/gravity-forms/gf-quiz-gut-health-2025-04-29.json) for raw form source.
+> 📎 Related: See [GravityForms Export](../forms-and-integrations/gravity-forms/gf-quiz-gut-health-2025-04-29.json) for raw form source.
 
 | Field Label        | Field Type   | Required   | Visibility   | Notes   |
 |:-------------------|:-------------|:-----------|:-------------|:--------|
@@ -24,3 +24,6 @@ author:
 | Program            | text         | No         | Hidden       | Membership program linked |
 
 ---
+
+## Versioning Notes
+- **v1.1** updates name and metadata for flattened /architecture

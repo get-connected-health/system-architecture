@@ -1,9 +1,9 @@
 ---
 title: Member Object Schema
-version: "1.5"
-author:
-  - Chris Anderson
-updated: 2025-04-25
+version: "1.6"
+tags: data-model
+author: Chris Anderson
+updated: 2025-04-30
 ---
 
 # Member Object Schema 
@@ -216,7 +216,7 @@ updated: 2025-04-25
 ---
 
 ## Versioning Notes
-
+- **v1.6** updates metadata
 - **v1.5** merges all fields and tables from v1.3 and v1.4
 - Adds compliance fields (`terms_*`), audit tables (`membership_tier_history`, `lab_activity_log`)
 - Restores feedback & journaling schemas and AI‑Coach context removed in v1.4

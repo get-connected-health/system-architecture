@@ -1,13 +1,13 @@
 ---
-title: Body Systems Assessment Field Map
-updated:
-  - 2025-04-29
-author:
-  - Chris Anderson
+title: Fields - Assessment - Body Systems
+version: 1.1
+tags: data-model
+author: Chris Anderson
+updated: 2025-04-29
 ---
 # Body Systems Assessment Field Documentation
 This table documents the fields used in the Body Systems Assessment GravityForms form.
- 📎 Related: See [GravityForms Export](../../../forms-and-integrations/gravity-forms/gf-body-systems-assessment-2025-04-29.json) for raw form source.
+ 📎 Related: See [GravityForms Export](../forms-and-integrations/gravity-forms/gf-body-systems-assessment-2025-04-29.json) for raw form source.
 
 | Field Label                                                                                                                                      | Field Type   | Required   | Visibility   | Notes   |
 |:-------------------------------------------------------------------------------------------------------------------------------------------------|:-------------|:-----------|:-------------|:--------|
@@ -271,3 +271,8 @@ This table documents the fields used in the Body Systems Assessment GravityForms
 | Body System                                                                                                                                      | number       | No         | Hidden       |         |
 | Sub-System                                                                                                                                       | number       | No         | Hidden       |         |
 | Conclusion                                                                                                                                       | html         | No         | Visible      |         |
+
+---
+
+## Versioning Notes
+- **v1.1** updates name and metadata for flattened /architecture

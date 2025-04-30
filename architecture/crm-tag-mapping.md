@@ -1,9 +1,9 @@
 ---
 title: CRM Tag Mapping Matrix
-author:
-  - Chris Anderson
-version: "1.2"
-updated: 2025-04-29
+version: "1.3"
+tags: logic, blueprint
+author: Chris Anderson
+updated: 2025-04-30
 ---
 # CRM Tag Mapping Matrix
 ---
@@ -57,6 +57,7 @@ updated: 2025-04-29
 ---
 
 ## Versioning Notes
+- Version 1.3 updates metadata
 - Version 1.2 clarifies platform ownership (GHL + M.io) for all modules
 - Version 1.1 added initial post-assessment modules
 - Version 1.0 established core onboarding flow mapping
