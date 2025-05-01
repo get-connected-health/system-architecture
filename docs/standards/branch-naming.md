@@ -1,7 +1,8 @@
 ---
 title: Branch Naming Convention
-last-updated: 2025-04-29
+version: 1.0
 author: Chris Anderson
+updated: 2025-04-29
 ---
 
 # Branch Naming Convention
