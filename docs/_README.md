@@ -19,31 +19,31 @@ Project-wide conventions for naming, branching, tagging, and structure
 
 Includes:
 - `branch-naming.md`
-- `tagging-guidelines.md` *(recommended)*
-- `commit-style.md` *(recommended)*
-- `scenario-naming.md` *(Make/Zapier logic)*
-- `field-maps.md` *(GHL, GF, Membership.io structure)*
+- `tagging-guidelines.md`
+- `commit-style.md`
+- `scenario-naming.md`
+- `field-maps.md`
 
-### `/playbooks/` *(WIP)*
+### `/playbooks/`
 Reusable checklists and procedures for common workflows  
-- Vendor onboarding sequences  
-- QA protocols  
-- Release checklists  
+- Release notes template and samples  
+- QA protocols, contributor onboarding  
 
-### `/troubleshooting/` *(WIP)*
+### `/troubleshooting/`
 Known issues and resolution guides  
-- How to fix common automation bugs  
-- Webhook test scenarios  
-- Integration errors and fallback steps
+- Webhook and Make errors  
+- Integration fallbacks and fixes
 
 ---
 
-## How to Use This Folder
+## Governance & Contributor Standards
 
-- Use this as a reference before requesting access or pushing code
-- Follow `/standards/` to align your commits and branches with system expectations
-- New contributors should read `/policies/access-policy.md` first
-- PMs and vendor leads should bookmark `/teams.md`
+All contributors must follow:
+- [`CONTRIBUTING.md`](../CONTRIBUTING.md) – commit style, PR flow, testing checklist
+- [CODEOWNERS](../.github/CODEOWNERS) – enforced team-based review rules
+- [`/policies/access-policy.md`](./policies/access-policy.md) – who gets access, and how
+- [`/standards/`](./standards/) – how we name, tag, and track system elements
+- [`/playbooks/release-notes-template.md`](./playbooks/release-notes-template.md) – required for version tagging
 
 For questions or suggestions, tag `@chris-rifm` or `@connected-health-admin`.
 

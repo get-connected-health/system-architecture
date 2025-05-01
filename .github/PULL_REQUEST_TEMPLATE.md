@@ -1,31 +1,47 @@
-# 📋 Pull Request Checklist
+# Pull Request: [Brief Title]
 
-Please complete the following before requesting review:
+## Summary
 
-- [ ] Code or documentation follows repo conventions
-- [ ] CHANGELOG.md updated if architecture, schema, or flows changed
-- [ ] Clear commit messages describing what changed and why
-- [ ] No direct changes to `/main` without PR (branch protection enforced)
-- [ ] Integration scenarios (if added/edited) are error-handled (Slack alerts for failures)
+What does this PR do?
+
+> e.g. Adds webhook validation logic to Make scenario for Gut Health intake.
 
 ---
 
-# 📝 Description of Changes
+## Changes
 
-<!--
-Explain what this PR does:
-- What file(s) changed
-- What system behavior it affects
-- If this closes/fixes a tracked issue
--->
+- [ ] Code or automation logic
+- [ ] Documentation or standards
+- [ ] Tags or field mappings
+- [ ] Governance or access policy
+- [ ] Supabase integration
+- [ ] Dashboard interface or logic
 
 ---
 
-# 📚 Related Work or References
+## Context
 
-<!--
-Link to related documents, blueprints, issues, or discussions if applicable.
-Example:
-- System Blueprint v1.2 (#12)
-- Member Object Schema v1.5 (#15)
--->
+- Relevant Jira/Sprint Task: [Paste link or ID]
+- Related Docs: [e.g. /docs/standards/field-maps.md]
+
+---
+
+## Testing
+
+Describe what was tested, and how.
+
+- [ ] Manual form submission
+- [ ] Webhook payload simulation
+- [ ] Supabase DB write tested
+- [ ] GHL tag correctly applied
+- [ ] Dashboard output confirmed
+
+---
+
+## Reviewer Checklist
+
+- [ ] Commit messages follow `commit-style.md`
+- [ ] Changes follow our `/standards/` conventions
+- [ ] Test logic is verified or described
+- [ ] Any new tags, fields, or outputs are documented
+- [ ] No hard-coded values or environment-specific logic
