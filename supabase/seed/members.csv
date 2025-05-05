@@ -1,0 +1,11 @@
+member_id,email,first_name,last_name,dob,gender,height_cm,weight_kg,membership_tier_current,signup_date,created_at,updated_at
+"c9a87c90-22c1-4342-9663-5f09203bf8f0","Brycen.Koepp77@gmail.com","Natasha","Cormier","2002-01-30","female",160,96,"pragmatic","2025-02-11T09:21:01.716+05:30","2025-02-11T09:21:01.716+05:30","2025-05-05T14:38:20.905+05:30"
+"cb48f770-00a9-415a-a57c-786ec4004ec0","Curtis_Tremblay80@gmail.com","German","Boyle","2000-10-05","prefer_not_to_say",181,116,"pro","2024-12-04T04:17:03.715+05:30","2024-12-04T04:17:03.715+05:30","2025-05-05T14:38:20.906+05:30"
+"4ddd8106-8f95-41bf-8145-a04e70eba986","Ozella.Russel@hotmail.com","Estrella","Hoeger","2022-08-09","prefer_not_to_say",171,102,"pragmatic","2025-04-27T08:08:04.303+05:30","2025-04-27T08:08:04.303+05:30","2025-05-05T14:38:20.907+05:30"
+"60bb4593-d445-402e-b5df-5a9380041e46","Norma30@hotmail.com","Boyd","Block","1970-08-18","prefer_not_to_say",159,96,"pro","2023-01-22T07:49:26.190+05:30","2023-01-22T07:49:26.190+05:30","2025-05-05T14:38:20.907+05:30"
+"852e9614-df5f-432c-904d-038926448071","Shannon_Waelchi19@yahoo.com","Katherine","Dicki","2009-09-26","female",195,67,"premium","2024-06-20T10:31:24.510+05:30","2024-06-20T10:31:24.510+05:30","2025-05-05T14:38:20.907+05:30"
+"4b88cee5-289e-4c0d-b86d-9e009d81cc93","Flavio.Nikolaus25@hotmail.com","Casey","Carter","1999-02-22","male",191,58,"pragmatic","2022-06-19T04:42:24.841+05:30","2022-06-19T04:42:24.841+05:30","2025-05-05T14:38:20.907+05:30"
+"368e8882-b5ea-4af7-8f62-4bccc6d8e258","Nigel_Dach@yahoo.com","Janet","Will","2012-08-02","female",179,82,"pro","2022-01-05T14:04:08.316+05:30","2022-01-05T14:04:08.316+05:30","2025-05-05T14:38:20.907+05:30"
+"730d4bee-a19b-4b47-bf7e-f7eadf7a4756","Wilfredo96@hotmail.com","Benton","Johnson","1978-03-25","prefer_not_to_say",155,98,"premium","2023-10-31T01:47:55.337+05:30","2023-10-31T01:47:55.337+05:30","2025-05-05T14:38:20.907+05:30"
+"b0b414c7-1bc8-48c6-80a3-aec29a204a30","Delbert33@gmail.com","Stephania","Leuschke","2004-06-09","prefer_not_to_say",162,82,"pro","2022-02-06T07:55:43.016+05:30","2022-02-06T07:55:43.016+05:30","2025-05-05T14:38:20.907+05:30"
+"f7dd63f1-612b-4056-a090-177f8893afa1","Jena.Wunsch66@yahoo.com","Anna","Jerde","1972-08-29","female",167,112,"premium","2024-03-16T00:23:08.852+05:30","2024-03-16T00:23:08.852+05:30","2025-05-05T14:38:20.908+05:30"
